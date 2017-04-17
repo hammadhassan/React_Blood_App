@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import firebase from "firebase";
 
 class Login extends Component {
     User(ev) {
@@ -7,7 +8,14 @@ class Login extends Component {
             email: this.refs.email.value,
             pass: this.refs.pass.value
         }
-        console.log(user);
+        firebase.auth().signInWithEmailAndPassword(user.email, user.pass)
+        
+        .then((user) => {
+                console.log(user)
+            })
+            .catch((error) => {
+                console.log(error.message)
+            });
     }
     render () {
         return (
