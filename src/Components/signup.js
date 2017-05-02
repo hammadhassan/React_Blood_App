@@ -1,17 +1,6 @@
 import React, { Component } from 'react';
-import firebase from "firebase";
 
 class SignUp extends Component {
-//     constructor(props) {
-//     super(props);
-//     this.state = {
-//       newUser: '',
-//       email: '',
-//       pass: ''
-//     } 
-//     console.log(this.state.signUpEmail);
-//     this.signUp = this.signUp.bind(this);
-// }
     newUser(ev) {
         ev.preventDefault()
         let user = {
@@ -20,33 +9,21 @@ class SignUp extends Component {
             pass: this.refs.pass.value
         }
         console.log(user);
-        //this.props.newUser(user);
-        firebase.auth().createUserWithEmailAndPassword(user.email, user.pass)
-            .then((user) => {
-                console.log(user)
-            })
-            .catch((error) => {
-                console.log(error.message)
-            });
+        //this.props.signUpUser(user);
     }
     render () {
         return (
             <div>
-                <h1>SignUp</h1>
+                <h1>Sign UP</h1>
                 <form>
                         <input type="text" ref="name" placeholder="User Name"/>
                         {/*<input type="text" ref="lName" placeholder="User First Last Name"/>*/}
-                        <input type="email" ref="email" placeholder="User Email" default="h@gmail.com"/>
-                        <input type="password" ref="pass" placeholder="Password" default="123456" />
+                        <input type="email" ref="email" placeholder="User Email"/>
+                        <input type="password" ref="pass" placeholder="Password"/>
                         <input type="button" onClick={this.newUser.bind(this)} value="Sign Up"/>
                 </form>
              </div>
         );
     }
 }
-
-SignUp.contextTypes = {
-    router: React.PropTypes.object
-}
-
 export default SignUp;

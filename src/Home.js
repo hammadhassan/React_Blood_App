@@ -1,14 +1,27 @@
 import React, { Component } from 'react';
-import Nav from "./Nav";
+import Login from "./Components/login";
+import SignUp from "./Components/signup";
+import firebase from "firebase";
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+// import App from "./App";
+
+var config = {
+    apiKey: "AIzaSyADOf_hBs003Gy5eM5ClgtCtcXdT1XeRYg",
+    authDomain: "react-blood-app-dc45a.firebaseapp.com",
+    databaseURL: "https://react-blood-app-dc45a.firebaseio.com",
+    projectId: "react-blood-app-dc45a",
+    storageBucket: "react-blood-app-dc45a.appspot.com",
+    messagingSenderId: "410364834554"
+  };
+  firebase.initializeApp(config);
 
 class Home extends Component {
     render () {
         return (
-      <div>
-          <Nav/>
-           <h2>Welcome to React</h2>
-           {this.props.children}
-      </div>
+            <Router history={browserHistory}>
+                <Route path="/" component={Login}/>
+                <Route path="signup" component={SignUp}/>
+            </Router>
         );
     }
 }
