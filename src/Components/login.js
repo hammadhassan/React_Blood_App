@@ -9,6 +9,7 @@ class Login extends Component {
             email: this.refs.email.value,
             pass: this.refs.pass.value
         }
+        //this.props.signInWithEmailAndPassword(user)
         firebase.auth().signInWithEmailAndPassword(user.email, user.pass)
         
         .then((user) => {

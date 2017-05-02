@@ -2,16 +2,7 @@ import React, { Component } from 'react';
 import firebase from "firebase";
 
 class SignUp extends Component {
-//     constructor(props) {
-//     super(props);
-//     this.state = {
-//       newUser: '',
-//       email: '',
-//       pass: ''
-//     } 
-//     console.log(this.state.signUpEmail);
-//     this.signUp = this.signUp.bind(this);
-// }
+
     newUser(ev) {
         ev.preventDefault()
         let user = {
@@ -19,6 +10,7 @@ class SignUp extends Component {
             email: this.refs.email.value,
             pass: this.refs.pass.value
         }
+            //this.props.createUserWithEmailAndPassword(user)
         console.log(user);
         //this.props.newUser(user);
         firebase.auth().createUserWithEmailAndPassword(user.email, user.pass)
