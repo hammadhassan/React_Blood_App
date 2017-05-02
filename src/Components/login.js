@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import firebase from "firebase";
+import { browserHistory} from 'react-router';
 
 class Login extends Component {
     User(ev) {
@@ -11,9 +12,11 @@ class Login extends Component {
         firebase.auth().signInWithEmailAndPassword(user.email, user.pass)
         
         .then((user) => {
-                console.log(user.refs.name);
-                console.log(user.refs.email);
-                console.log(user.refs.pass);
+                // console.log(user.refs.name);
+                // console.log(user.refs.email);
+                // console.log(user.refs.pass);
+                browserHistory.push("/welcome")
+                console.log(user);
             })
             .catch((error) => {
                 console.log(error.message);
