@@ -1,12 +1,42 @@
-import reduc from "redux";
+import { AuthAction } from './authReducer'
 
-console.log("Reducer");
+const INITIAL_STATE = {
+    authUser: {},
+    isRegistered: false,
+    isLoggedin: false,
+    isLodding: false,
+    isError: false,
+    errorMessage: {}
+}
 
-var reducer = (state = {}, action) => {
-    return state;
-};
+export const AuthReducer = (state = INITIAL_STATE, action) => {
+    switch (action.type) {
+        case AuthAction.SIGNUP:
+            return Object.assign({}, state, { isLodding: true })
 
-var store = redux.createStore(reducer);
+        case AuthAction.SIGNUP_SUCCESS:
+            return Object.assign({}, state, { isLodding: false, isRegistered: true })
 
-var currentState = store.getState();
+        case AuthAction.SIGNUP_REJECT:
+            return Object.assign({}, state, { isLodding: false, errorMessage: action.value, isError: true })
 
+        case AuthAction.LOGIN_REJECT:
+            return Object.assign({}, state, { errorMessage: action.value, isError: true })
+        case AuthAction.LOGIN:
+            return Object.assign({}, state, { isLoggedin: true, authUser: action.value })
+        default:
+            return state
+    }
+}
+
+// import redux from "redux";
+
+// console.log("Reducer");
+
+// var reducer = (state = {}, action) => {
+//     return state;
+// };
+
+// var store = redux.createStore(reducer);
+
+// var currentState = store.getState();
