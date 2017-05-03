@@ -26,8 +26,8 @@ class Login extends Component {
     User(ev) {
         ev.preventDefault()
         let user = {
-            email: this.refs.email.value,
-            pass: this.refs.pass.value
+            email: this.refs.email.getValue(),
+            pass: this.refs.pass.getValue()
         }
         //this.props.signInWithEmailAndPassword(user)
         firebase.auth().signInWithEmailAndPassword(user.email, user.pass)
