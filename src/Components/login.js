@@ -1,8 +1,28 @@
 import React, { Component } from 'react';
 import firebase from "firebase";
 import { browserHistory} from 'react-router';
+import RaisedButton from 'material-ui/RaisedButton';
+import TextField from 'material-ui/TextField';
+
+const style = {
+  margin: 12,
+};
 
 class Login extends Component {
+//     constructor(props) {
+//     super(props);
+
+//     this.state = {
+//       value: 'Property Value',
+//     };
+//   }
+
+//   handleChange = (event) => {
+//     this.setState({
+//       value: event.target.value,
+//     });
+//   };
+
     User(ev) {
         ev.preventDefault()
         let user = {
@@ -13,9 +33,6 @@ class Login extends Component {
         firebase.auth().signInWithEmailAndPassword(user.email, user.pass)
         
         .then((user) => {
-                // console.log(user.refs.name);
-                // console.log(user.refs.email);
-                // console.log(user.refs.pass);
                 browserHistory.push("/welcome")
                 console.log(user);
             })
@@ -27,10 +44,10 @@ class Login extends Component {
         return (
             <div>
                 <h1>Login</h1>
-                <form>
-                    <input type="email" ref="email" placeholder="User Email"/>
-                    <input type="password" ref="pass" placeholder="Password"/>
-                    <input type="button" onClick={this.User.bind(this)} value="Login"/>
+                <form onSubmit={this.User.bind(this)}>
+                    <TextField ref="email" hintText="User Email"/><br />
+                    <TextField type="password" ref="pass" hintText="Password"/><br />
+                    <RaisedButton primary={true} style={style} type="button" value="login" label="Login" type="submit" />
                 </form>
             </div>    
         );

@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 //import Home from "./Home";
 import {Link, IndexLink} from "react-router";
+import AppBar from 'material-ui/AppBar';
 
 class Nav extends Component {
     render () {
   return (
-    <div>
+      <div>
       <h2>Nav Component</h2>
+        <AppBar
+        title="Title"
+        iconClassNameRight="muidocs-icon-navigation-expand-more"
+        />,
       <IndexLink to="/" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>Home or Login</IndexLink>
       <Link to="/signup" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>SignUp</Link>
       {/*<Link to="/login" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>Login</Link>*/}
@@ -15,4 +20,4 @@ class Nav extends Component {
 };
 }
 
-export default Nav;
+export default (Nav,AppBar);

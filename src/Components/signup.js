@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import firebase from "firebase";
+import RaisedButton from 'material-ui/RaisedButton';
+import TextField from 'material-ui/TextField';
 
 class SignUp extends Component {
 
@@ -25,12 +27,12 @@ class SignUp extends Component {
         return (
             <div>
                 <h1>SignUp</h1>
-                <form>
-                        <input type="text" ref="name" placeholder="User Name"/>
+                <form onClick={this.newUser.bind(this)}>
+                        <TextField type="text" ref="name" hintText="User Name"/><br />
                         {/*<input type="text" ref="lName" placeholder="User First Last Name"/>*/}
-                        <input type="email" ref="email" placeholder="User Email" default="h@gmail.com"/>
-                        <input type="password" ref="pass" placeholder="Password" default="123456" />
-                        <input type="button" onClick={this.newUser.bind(this)} value="Sign Up"/>
+                        <TextField type="email" ref="email" hintText="User Email" /><br />
+                        <TextField type="password" ref="pass" hintText="Password" /><br />
+                        <RaisedButton label="Sign Up" type="button" />
                 </form>
              </div>
         );
