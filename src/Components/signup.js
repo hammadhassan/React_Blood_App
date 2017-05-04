@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import firebase from "firebase";
+//import firebase from "firebase";
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
-//import { connect } from 'react-redux'
-//import { FirebaseAuthService } from '../store/authMiddleware'
+import { connect } from 'react-redux'
+import { FirebaseAuthService } from '../store/authMiddleware'
 import { browserHistory } from "react-router";
 // const style = {
 //   margin: 12,
@@ -24,17 +24,17 @@ class SignUp extends Component {
             email: this.refs.email.getValue(),
             pass: this.refs.pass.getValue()
         }
-            this.props.createUserWithEmailAndPassword(user)
+            //this.props.createUserWithEmailAndPassword(user)
             this.props.signUpUser(user)
-        console.log(user);
-        this.props.newUser(user);
-        firebase.auth().createUserWithEmailAndPassword(user.email, user.pass)
-            .then((user) => {
-                console.log(user)
-            })
-            .catch((error) => {
-                console.log(error.message)
-            });
+        // console.log(user);
+        // this.props.newUser(user);
+        // firebase.auth().createUserWithEmailAndPassword(user.email, user.pass)
+        //     .then((user) => {
+        //         console.log(user)
+        //     })
+        //     .catch((error) => {
+        //         console.log(error.message)
+        //     });
     }
     render () {
         return (
@@ -45,7 +45,7 @@ class SignUp extends Component {
                         {/*<input type="text" ref="lName" placeholder="User First Last Name"/>*/}
                         <TextField type="email" ref="email" hintText="User Email" /><br />
                         <TextField type="password" ref="pass" hintText="Password" /><br />
-                        <RaisedButton label="Sign Up" primary={true} type="button" />
+                        <RaisedButton label="Sign Up" primary={true} type="submit"/>
                 </form>
              </div>
         );
@@ -56,21 +56,21 @@ class SignUp extends Component {
 //     router: React.PropTypes.object
 // }
 
-export default SignUp;
+//export default SignUp;
 
-// const mapStateToProps = (state) => {
-//     return {
-//         isLoggedin: state.isLoggedin,
-//         isRegistered: state.isRegistered
-//     }
-// }
+const mapStateToProps = (state) => {
+    return {
+        isLoggedin: state.isLoggedin,
+        isRegistered: state.isRegistered
+    }
+}
 
-// const mapDispatchToProps = (dispatch) => {
-//     return {
-//         signUpUser: (userAuth) => {
-//             dispatch(FirebaseAuthService.registerUserOnFirebase(userAuth))
-//         }
-//     }
-// }
+const mapDispatchToProps = (dispatch) => {
+    return {
+        signUpUser: (userAuth) => {
+            dispatch(FirebaseAuthService.registerUserOnFirebase(userAuth))
+        }
+    }
+}
 
-// export default connect(mapStateToProps, mapDispatchToProps)(SignUp)
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp)

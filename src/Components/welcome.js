@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-//import { connect } from 'react-redux'
+import { connect } from 'react-redux'
 import AppBar from 'material-ui/AppBar';
 
 class Welcome extends Component {
@@ -9,7 +9,7 @@ class Welcome extends Component {
                 <AppBar title="Title" iconClassNameRight="muidocs-icon-navigation-expand-more"/>,
                 <h1>Welcome to The Blood App</h1>
                 {/*{this.props.refs.email.getValue()}*/}
-                {/*{this.props.children}*/}
+                {this.props.user.name}
             </div>
         );
     }
@@ -19,4 +19,12 @@ class Welcome extends Component {
 // state.authUser         // isLoggedin: state.isLoggedin     } } export default
 // connect(mapStateToProps, null)(Welcome)
 
-export default(Welcome, AppBar);
+// export default(Welcome, AppBar);
+
+const mapStateToProps = (state) => {
+    return {
+        user: state.authUser,
+        isLoggedin: state.isLoggedin
+    }
+}
+export default connect(mapStateToProps, null)(Welcome, AppBar)

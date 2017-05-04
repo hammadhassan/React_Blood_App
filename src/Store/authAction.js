@@ -3,7 +3,6 @@ export class AuthAction {
     static LOGIN = "LOGIN"
     static LOGOUT = "LOGOUT"
     static SIGNUP_SUCCESS = "SIGNUP_SUCCESS"
-
     static LOGOUT_REJECT = "LOGOUT_REJECT"
     static SIGNUP_REJECT = "SIGNUP_REJECT"
     static LOGIN_REJECT = "LOGIN_REJECT"

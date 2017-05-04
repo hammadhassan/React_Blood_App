@@ -1,25 +1,20 @@
 import React, { Component } from 'react';
-import firebase from "firebase";
+//import firebase from "firebase";
 import { browserHistory} from 'react-router';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
-// import { connect } from 'react-redux'
-//import { FirebaseAuthService } from '../store/authMiddleware'
-
-
-const style = {
-  margin: 12,
-};
+import { connect } from 'react-redux'
+import { FirebaseAuthService } from '../store/authMiddleware'
 
 class Login extends Component {
-//     constructor(props) {
-//     super(props);
+    // constructor(props) {
+    // super(props);
     componentWillReceiveProps(nextProp) {
         if (nextProp.isLoggedin) {
-            browserHistory.push('/home')
+            browserHistory.push('/welcome')
         }
     }
-
+    
 //     this.state = {
 //       value: 'Property Value',
 //     };
@@ -37,17 +32,17 @@ class Login extends Component {
             email: this.refs.email.getValue(),
             pass: this.refs.pass.getValue()
         }
-       //this.props.loginWithFirebase(user)
+       this.props.loginWithFirebase(user)
        // this.props.signInWithEmailAndPassword(user)
-        firebase.auth().signInWithEmailAndPassword(user.email, user.pass)
+        // firebase.auth().signInWithEmailAndPassword(user.email, user.pass)
         
-        .then((user) => {
-                browserHistory.push("/welcome")
-                console.log(user);
-            })
-            .catch((error) => {
-                console.log(error.message);
-            });
+        // .then((user) => {
+        //         browserHistory.push("/welcome")
+        //         console.log(user);
+        //     })
+        //     .catch((error) => {
+        //         console.log(error.message);
+        //     });
     }
     render () {
         return (
@@ -56,25 +51,25 @@ class Login extends Component {
                 <form onSubmit={this.User.bind(this)}>
                     <TextField ref="email" hintText="User Email"/><br />
                     <TextField type="password" ref="pass" hintText="Password"/><br />
-                    <RaisedButton primary={true} style={style} value="login" label="Login" type="submit" />
+                    <RaisedButton primary={true} value="login" label="Login" type="submit" />
                 </form>
             </div>    
         );
     }
 }
-export default Login;
+//export default Login;
 
-// const mapStateToProps = (state) => {
-//     return {
-//         isLoggedin: state.isLoggedin
-//     }
-// }
+const mapStateToProps = (state) => {
+    return {
+        isLoggedin: state.isLoggedin
+    }
+}
 
-// const mapDispatchToProps = (dispatch) => {
-//     return {
-//         loginWithFirebase: (user) => {
-//             dispatch(FirebaseAuthService.loginOnFirebase(user))
-//         }
-//     }
-// }
-// export default connect(mapStateToProps, mapDispatchToProps)(Login)
+const mapDispatchToProps = (dispatch) => {
+    return {
+        loginWithFirebase: (user) => {
+            dispatch(FirebaseAuthService.loginOnFirebase(user))
+        }
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

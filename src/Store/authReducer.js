@@ -1,4 +1,4 @@
-import { AuthAction } from './authReducer'
+import { AuthAction } from './authAction'
 
 const INITIAL_STATE = {
     authUser: {},
@@ -28,15 +28,3 @@ export const AuthReducer = (state = INITIAL_STATE, action) => {
             return state
     }
 }
-
-// import redux from "redux";
-
-// console.log("Reducer");
-
-// var reducer = (state = {}, action) => {
-//     return state;
-// };
-
-// var store = redux.createStore(reducer);
-
-// var currentState = store.getState();

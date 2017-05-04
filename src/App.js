@@ -16,6 +16,8 @@ class App extends Component {
                 <Route path="/signup" component={SignUp} />
                     <IndexRoute component={Login} />
                     <Route path="/welcome" component={Welcome} />
+                    <Route path="/signup" component={SignUp} />
+                    <Route path="/login" component={Login} />
                 </Route>
             </Router>
             </MuiThemeProvider>
