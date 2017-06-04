@@ -10,7 +10,7 @@ class DonorForm extends Component {
                 <form>
                     <input type="text" placeholder="First Name" ref="fName"/>
                     <input type="text" placeholder="Last Name" ref="lastname"/>
-                    <input type="radio" placeholder="Select Your Blood App" ref="blood"
+                    <input type="radio" placeholder="Select Your Blood App" ref="blood">
                     <input type="text" placeholder="Blood Group" ref="group"/>
                     <input type="radio" value="A+" ref="group"/>A+
                     <input type="radio" value="B+" ref="group"/>B+
