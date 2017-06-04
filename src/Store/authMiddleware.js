@@ -6,24 +6,19 @@ export class FirebaseAuthService {
 
     static registerUserOnFirebase(credentials) {
         return (dispatch) => {
-            // console.log('credentials', credentials)
             dispatch(AuthAction.signupProcess())
 
             firebase.auth().createUserWithEmailAndPassword(credentials.email, credentials.pass)
                 .then((userResponseFromFirebase) => {
-                    // console.log(userResponseFromFirebase)
                     FirebaseAuthService.createUserOnFirebaseWithUid(dispatch, credentials, userResponseFromFirebase)
                 })
                 .catch((error) => {
-                    // console.log(error.message)
                     dispatch(AuthAction.signupReject(error))
                 });
         }
     }
 
     static createUserOnFirebaseWithUid(dispatch, credentials, userResponseFromFirebase) {
-        // console.log("Success",userResponseFromFirebase)
-        // console.log('credentials', credentials)
 
         delete credentials.pass
         firebase.database().ref('/')
@@ -34,7 +29,6 @@ export class FirebaseAuthService {
             })
     }
 
-
     static loginOnFirebase(credentials) {
         return (dispatch) => {
             firebase.auth()
@@ -43,7 +37,6 @@ export class FirebaseAuthService {
                     FirebaseAuthService.getUserFromFirebase(dispatch, authUser)
                 })
                 .catch((error) => {
-                    // console.log(error.message)
                     dispatch(AuthAction.loginReject(error))
                 });
         }
@@ -68,7 +61,26 @@ export class FirebaseAuthService {
                     dispatch(AuthAction.logOutUserReject(error))
                 });
         }
-
+    }
+    static sendingDataToFirebase(data) {
+        return (dispatch) => {
+            let database = firebase.database().ref().child("dataUsingRedux");
+            database.push(data);
+            dispatch(AuthAction.sentDataAction())
+        }
     }
 
+    static fetchDataFromFirebase() {
+        return (dispatch) => {
+            let arrdata = []
+            let database = firebase.database().ref("/dataUsingRedux/");
+            database.on('value', (object) => {
+                let data = object.val();
+                for (var a in data) {
+                    arrdata.push(data[a].donorInfo);
+                }
+                dispatch(AuthAction.gettingDataAction(arrdata));
+            });
+        }
+    }
 }

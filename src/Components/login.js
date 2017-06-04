@@ -5,26 +5,27 @@ import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import { connect } from 'react-redux'
 import { FirebaseAuthService } from '../store/authMiddleware'
+import CircularProgress from 'material-ui/CircularProgress';
 
 class Login extends Component {
     // constructor(props) {
     // super(props);
+//     State = {
+//       isLoading: false,
+//     }
+//   }
+
+//   handleChange(e) {
+//     this.setState({
+//       isLoading: true,
+//     })
+//   },
     componentWillReceiveProps(nextProp) {
         if (nextProp.isLoggedin) {
             browserHistory.push('/welcome')
         }
     }
     
-//     this.state = {
-//       value: 'Property Value',
-//     };
-//   }
-
-//   handleChange = (event) => {
-//     this.setState({
-//       value: event.target.value,
-//     });
-//   };
 
     User(ev) {
         ev.preventDefault()
@@ -52,12 +53,22 @@ class Login extends Component {
                     <TextField ref="email" hintText="User Email"/><br />
                     <TextField type="password" ref="pass" hintText="Password"/><br />
                     <RaisedButton primary={true} value="login" label="Login" type="submit" />
+                    {/*<CircularProgress />*/}
                 </form>
             </div>    
         );
     }
 }
 //export default Login;
+
+/*const CircularProgressExampleSimple = () => (
+  <div>
+    <CircularProgress />
+    <CircularProgress size={60} thickness={7} />
+    <CircularProgress size={80} thickness={5} />
+  </div>
+);*/
+
 
 const mapStateToProps = (state) => {
     return {

@@ -5,12 +5,14 @@ import SignUp from "./Components/signup";
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import Welcome from "./Components/welcome";
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-//import MyAwesomeReactComponent from './MyAwesomeReactComponent';
+import AppBar from 'material-ui/AppBar';
 
 class App extends Component {
   render() {
         return (
             <MuiThemeProvider>
+                <div>
+                <AppBar title="Title" iconClassNameRight="muidocs-icon-navigation-expand-more"/>,
             <Router history={browserHistory}>
                 <Route path="/" component={Home}>
                 <Route path="/signup" component={SignUp} />
@@ -20,6 +22,7 @@ class App extends Component {
                     <Route path="/login" component={Login} />
                 </Route>
             </Router>
+                </div>
             </MuiThemeProvider>
         )
     }

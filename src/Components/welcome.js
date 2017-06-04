@@ -1,15 +1,20 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux'
 import AppBar from 'material-ui/AppBar';
+//import PropTypes from 'prop-types';
+import DonorList from "../Donor/donorList"
+import DonorForm from "../Donor/donorForm"
 
 class Welcome extends Component {
     render() {
         return (
             <div>
-                <AppBar title="Title" iconClassNameRight="muidocs-icon-navigation-expand-more"/>,
+                {/*<AppBar title="Title" iconClassNameRight="muidocs-icon-navigation-expand-more"/>,*/}
                 <h1>Welcome to The Blood App</h1>
                 {/*{this.props.refs.email.getValue()}*/}
-                {this.props.user.name}
+                <h2>{this.props.user.name}</h2>
+                <DonorList />
+                <DonorForm />
             </div>
         );
     }

@@ -6,7 +6,8 @@ export class AuthAction {
     static LOGOUT_REJECT = "LOGOUT_REJECT"
     static SIGNUP_REJECT = "SIGNUP_REJECT"
     static LOGIN_REJECT = "LOGIN_REJECT"
-
+    static SENT_DATA = "SENT_DATA"
+    static GET_DATA = "GET_DATA"
 
     static signupProcess() {
         return {
@@ -51,6 +52,18 @@ export class AuthAction {
         return {
             type: AuthAction.LOGOUT_REJECT,
             value: reason
+        }
+    }
+    static sentDataAction() {
+        return {
+            type: AuthAction.SENT_DATA
+        }
+    }
+
+    static gettingDataAction(value) {
+        return {
+            type: AuthAction.GET_DATA,
+            data: value
         }
     }
 

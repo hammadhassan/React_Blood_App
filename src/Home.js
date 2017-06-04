@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Nav from "./Nav";
+//import PropTypes from 'prop-types';
 
 class Home extends Component {
     render () {
