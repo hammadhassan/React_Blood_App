@@ -5,7 +5,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import { connect } from 'react-redux'
 import { FirebaseAuthService } from '../store/authMiddleware'
-import CircularProgress from 'material-ui/CircularProgress';
+//import CircularProgress from 'material-ui/CircularProgress';
 
 class Login extends Component {
     // constructor(props) {
@@ -33,6 +33,7 @@ class Login extends Component {
             email: this.refs.email.getValue(),
             pass: this.refs.pass.getValue()
         }
+        console.log(user);
        this.props.loginWithFirebase(user)
        // this.props.signInWithEmailAndPassword(user)
         // firebase.auth().signInWithEmailAndPassword(user.email, user.pass)
