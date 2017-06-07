@@ -13,20 +13,23 @@ class DonorForm extends Component {
         super(props);
         this.state = {
          value: 1,
-        blood: '',
+        // blood: '',
         }
     }
-    changeValue = (event, key) => {
-        this.setState({
-        value: key + 1,
-        blood: event.target.childNodes[0].nodeValue
-        });
-    }
+    // changeValue = (event, key) => {
+    //     this.setState({
+    //     value: key + 1,
+    //     blood: event.target.childNodes[0].nodeValue
+    //     });
+    // }
+
+    handleChange = (event, index, value) => this.setState({value});
+
     onSubmit(ev) {
         ev.preventDefault()
         let donor = {
             name : this.refs.firstName.getValue() + " " + this.refs.lastName.getValue(),
-            blood : this.state.blood
+            blood : this.state.value
         }
         console.log(donor);
     }
@@ -45,8 +48,8 @@ class DonorForm extends Component {
                     <input type="radio" value="5" ref="group"/>AB-<br />
                     <input type="radio" value="6" ref="group"/>O-<br />
                     <input type="radio" value="7" ref="group"/>O+<br />*/}
-                       <DropDownMenu value={this.state.value} onChange={this.changeValue.bind(this)}>
-                        <MenuItem value={1} primaryText="Blood Group" disabled ref="blood"/>
+                       <DropDownMenu value={this.state.value} onChange={this.handleChange.bind(this)}>
+                        <MenuItem value={1} primaryText="Blood Group" />
                         <MenuItem value={2} primaryText="A+" />
                         <MenuItem value={3} primaryText="B+" />
                         <MenuItem value={4} primaryText="AB+" />
