@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
-//import DropDownMenu from 'material-ui/DropDownMenu';
-//import MenuItem from 'material-ui/MenuItem';
+// import DropDownMenu from 'material-ui/DropDownMenu';
+// import MenuItem from 'material-ui/MenuItem';
+// import TextField from 'material-ui/TextField';
+// import RaisedButton from 'material-ui/RaisedButton';
 import { TextField, MenuItem, DropDownMenu, RaisedButton } from 'material-ui';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+    injectTapEventPlugin();
 
 class DonorForm extends Component {
     // onSubmit() {
@@ -48,7 +52,7 @@ class DonorForm extends Component {
                     <input type="radio" value="5" ref="group"/>AB-<br />
                     <input type="radio" value="6" ref="group"/>O-<br />
                     <input type="radio" value="7" ref="group"/>O+<br />*/}
-                       <DropDownMenu value={this.state.value} onChange={this.handleChange.bind(this)}>
+                    <DropDownMenu value={this.state.value} onClick={this.handleChange.bind(this)}>
                         <MenuItem value={1} primaryText="Blood Group" />
                         <MenuItem value={2} primaryText="A+" />
                         <MenuItem value={3} primaryText="B+" />
@@ -59,6 +63,7 @@ class DonorForm extends Component {
                         <MenuItem value={8} primaryText="B-" />
                         <MenuItem value={9} primaryText="A-" />
                     </DropDownMenu>
+
                     <RaisedButton primary={true} label="submit" type="submit"/>
                 </form>
             </div>
