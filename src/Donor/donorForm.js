@@ -17,7 +17,7 @@ class DonorForm extends Component {
         super(props);
         this.state = {
          value: 1,
-        // blood: '',
+        //blood: '',
         }
     }
     // changeValue = (event, key) => {
@@ -52,7 +52,7 @@ class DonorForm extends Component {
                     <input type="radio" value="5" ref="group"/>AB-<br />
                     <input type="radio" value="6" ref="group"/>O-<br />
                     <input type="radio" value="7" ref="group"/>O+<br />*/}
-                    <DropDownMenu value={this.state.value} onClick={this.handleChange.bind(this)}>
+                    <DropDownMenu value={this.state.value} onChange={this.handleChange.bind(this)}>
                         <MenuItem value={1} primaryText="Blood Group" />
                         <MenuItem value={2} primaryText="A+" />
                         <MenuItem value={3} primaryText="B+" />
