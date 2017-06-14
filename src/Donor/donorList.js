@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
-import {
-  Table,
-  TableBody,
-  TableHeader,
-  TableHeaderColumn,
-  TableRow,
-  TableRowColumn,
-} from 'material-ui/Table';
+import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
+// import injectTapEventPlugin from 'react-tap-event-plugin';
+//injectTapEventPlugin();
 
 class DonorList extends Component {
     preventDefault(ev)  {
