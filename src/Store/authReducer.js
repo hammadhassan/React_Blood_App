@@ -22,8 +22,12 @@ export const AuthReducer = (state = INITIAL_STATE, action) => {
 
         case AuthAction.LOGIN_REJECT:
             return Object.assign({}, state, { errorMessage: action.value, isError: true })
+        
         case AuthAction.LOGIN:
             return Object.assign({}, state, { isLoggedin: true, authUser: action.value })
+        
+        case AuthAction.LOGIN_OUT:
+            return Object.assign({}, state, { isLoggedin: false, authUser: action.value })    
         default:
             return state
     }

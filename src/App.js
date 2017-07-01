@@ -6,6 +6,7 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import Welcome from "./Components/welcome";
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
+import DonorList from "./Donor/donorList";
 
 class App extends Component {
   render() {
@@ -19,6 +20,7 @@ class App extends Component {
                     <IndexRoute component={Login} />
                     <Route path="/welcome" component={Welcome} />
                     <Route path="/signup" component={SignUp} />
+                    <Route path="/donorlist" component={DonorList} />
                     <Route path="/login" component={Login} />
                 </Route>
             </Router>
