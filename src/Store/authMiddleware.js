@@ -43,9 +43,7 @@ export class FirebaseAuthService {
     }
 
     static getUserFromFirebase(dispatch, authUser) {
-        firebase.database().ref('/')
-            .child(`newUsers/${authUser.uid}`)
-            .once('value', (snap) => {
+        firebase.database().ref('/').child(`newUsers/${authUser.uid}`).once('value', (snap) => {
                 dispatch(AuthAction.loginSuccessFull(snap.val()))
             })
     }

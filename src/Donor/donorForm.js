@@ -11,10 +11,10 @@ class DonorForm extends Component {
         this.state = {
         value: "1",
         blood: '',
-        donors: [{
+        donors: [
             // name: 'no name',
             // blood:'no blood'
-        }]
+]
 
         }
     }
@@ -23,22 +23,23 @@ class DonorForm extends Component {
     onSubmit(ev) {
         ev.preventDefault()
     //myInput.value = "";
-        var donorList = [];
-        donorList = this.state.donors;
+        // var donorList = [];
+        // donorList = this.state.donors;
         let donor = {
             name : this.refs.firstName.getValue() + " " + this.refs.lastName.getValue(),
-            blood : this.state.value
+            bloodGroup : this.state.value
         }
-        donorList[0].name = donor.name;
-        donorList[0].blood = donor.blood;
-        firebase.database().ref('donors/').push({ donorList }).then(
-        console.log('success')
+        // donorList[0].name = donor.name;
+        // donorList[0].blood = donor.blood;
+        //console.log(donor);
+        firebase.database().ref('donorsData/').push({ donor }).then(
+        console.log('success', donor)
         );
-        console.log(donorList);
+        // console.log(donor);
 
-        this.setState({
-            donors:  donorList
-        })
+        // this.setState({
+        //     donors:  donorList,
+        // })
     //     if (name === "" || name === " " || name === "  " ) {
     //     alert("Please Enter Your Task")
     // }
