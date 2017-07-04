@@ -14,8 +14,7 @@ class DonorForm extends Component {
         donors: [
             // name: 'no name',
             // blood:'no blood'
-]
-
+            ]       
         }
     }
     handleChange = (event, index, value) => this.setState({value});
@@ -25,15 +24,15 @@ class DonorForm extends Component {
     //myInput.value = "";
         // var donorList = [];
         // donorList = this.state.donors;
-        let donor = {
+        let donors = {
             name : this.refs.firstName.getValue() + " " + this.refs.lastName.getValue(),
             bloodGroup : this.state.value
         }
         // donorList[0].name = donor.name;
         // donorList[0].blood = donor.blood;
         //console.log(donor);
-        firebase.database().ref('donorsData/').push({ donor }).then(
-        console.log('success', donor)
+        firebase.database().ref('donorsData/').push({ donors }).then(
+        console.log('success', donors)
         );
         // console.log(donor);
 
