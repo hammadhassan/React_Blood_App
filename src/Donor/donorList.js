@@ -15,82 +15,36 @@ class DonorList extends Component {
   constructor() {
     super();
     this.state = {
-    donorList: [
-      // name, "Hammad Hassan",
-      // bloodGroup, "B+"
-    ]
-    //donorsInfo: []
+    donorList: [{
+      name: "Hammad Hassan",
+      bloodGroup: "B+"
+    }]
     }
     this.getValues = this.getValues.bind(this)
   }
-  getValues(e) {
-    e.preventDefault();
-  }
   componentWillMount() {   
-    var rootRef = firebase.database().ref().child('donors');
-    rootRef.on('child_added', snap => {
-     alert("jy");
-    var arr = [];
-    arr[1] = this.state.donorList;
-     arr.push(snap.val().donorList);
-       console.log(arr[1]);
-    // var newArr = arr;
-    // console.log(arr);
-    this.setState({
-      donorList: arr
-    });
-  });
-  console.log(this.state.donorList);
-}
-/*
-  componentWillMount() {
-    // console.log(this.state.donorList)
-    // var rootRef = firebase.database().ref(`/`).child(`donors`);
-    // // rootRef.on('child_added', snap => {
-    // // var list = [];
-    // rootRef.on(`child_added`, snap => {
-    // var arr = [];
-    // //   list = snap.val();
-    //   // console.log("Blood Group " + list.blood);
-    //   // console.log("Name " + list.name);
-    //   //console.log(arr);
-    //   arr = this.state.donorList;
-    //   arr.push(snap.val().donorList);
-    //   this.setState({
-    //     donorList: arr
-    //   });
-    //   console.log(this.state.donorList);
-    //   console.log(arr);
-
-    // })
-    // var commentsRef = firebase.database().ref('/').child('donors');
-    // commentsRef.on('child_added', snap => {
-    //   addCommentElement(postElement, data.key, data.val().text, data.val().author);
-    //   var arr = [];
-    //   arr = this.state.donorList;
-    //   console.log(data.val());
-      
-    //    arr.push(snap.val().donorList);
-    //   console.log(arr)
-    //   this.setState({donorList: arr})
-    //   onsole.log(this.state.donorsInfo);
-
-    var rootRef = firebase.database().ref().child('donors');
+    var rootRef = firebase.database().ref().child('donorsData');
         rootRef.on('child_added', snap => {
-            var arr = [];
-            arr = this.state.donorsInfo;
-            arr.push(snap.val().donorInfo);
+            var list = [{
+              name: this.state.donorList.name,
+              bloodGroup: this.state.donorList.bloodGroup
+            }];
+            list = this.state.donorList;
+            list.push(snap.val().donorList);
+            alert(list);
             this.setState({
-                donorsInfo: arr
+                donorList: list
             })
             // console.log(this.state.donorsInfo);
         })
-        console.log(this.state.donorsInfo);
-  }*/
+        console.log(this.state.donorList);
+    }
+  getValues(e) {
+    e.preventDefault();
+  }
   render() {
     return (
       <div>
-        {/*{this.props.DonorForm.DonorList}*/}
         <Table>
           <TableHeader>
             <TableRow>
@@ -99,10 +53,10 @@ class DonorList extends Component {
             </TableRow>
           </TableHeader>
           <TableBody>
-            <TableRow>
+            {/*<TableRow>
               <TableRowColumn>Hammad Hassan</TableRowColumn>
               <TableRowColumn>B+</TableRowColumn>
-            </TableRow>
+            </TableRow>*/}
             {this.state.donorList.map((value, i) => {
                 return <TableRow key={i}>
                   <TableRowColumn>{value.name}</TableRowColumn>
