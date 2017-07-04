@@ -9,48 +9,24 @@ class DonorForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-        value: "1",
-        blood: '',
-        donors: [
-            // name: 'no name',
-            // blood:'no blood'
-            ]       
-        }
+        value: "1"       
+      }
     }
     handleChange = (event, index, value) => this.setState({value});
 
     onSubmit(ev) {
         ev.preventDefault()
-    //myInput.value = "";
-        // var donorList = [];
-        // donorList = this.state.donors;
         let donors = {
             name : this.refs.firstName.getValue() + " " + this.refs.lastName.getValue(),
             bloodGroup : this.state.value
         }
-        // donorList[0].name = donor.name;
-        // donorList[0].blood = donor.blood;
-        //console.log(donor);
         firebase.database().ref('donorsData/').push({ donors }).then(
         console.log('success', donors)
         );
-        // console.log(donor);
-
         // this.setState({
-        //     donors:  donorList,
-        // })
-    //     if (name === "" || name === " " || name === "  " ) {
-    //     alert("Please Enter Your Task")
-    // }
-    //     else {
-    // }
-    /*var info = "";
-    for(var i = 0; i < donorList.length; i++) {
-        info = info + donorList[i];
-        donorList.innerHTML = info;
-        donorList.push(donor);
-    }
-        console.log(donorList);*/
+        //     name: "",
+        //     bloodGroup: "1"
+        // });
     }
     render () {
         return (
@@ -72,10 +48,6 @@ class DonorForm extends Component {
 
                     <RaisedButton primary={true} label="submit" type="submit"/>
                 </form>
-                {/*<div>{this.state.donors[0].name }</div>
-                <div>{this.state.donors[0].blood }</div>
-                
-                <donorList data={this.state.don}/>*/}
             </div>
         );
     }

@@ -23,21 +23,23 @@ class DonorList extends Component {
     this.getValues = this.getValues.bind(this)
   }
   componentWillMount() {   
-    var rootRef = firebase.database().ref().child('donorsData');
-        rootRef.on('child_added', snap => {
+    // var rootRef = firebase.database().ref('/').child('donorsData');
+    //     rootRef.on('child_added', snap => {
+    var rootRef = firebase.database().ref('/').child(`donorsData`);
+        rootRef.once('value', (snap) => {
             var list = [{
-              name: this.state.donorList.name,
-              bloodGroup: this.state.donorList.bloodGroup
+            //name: this.state.donorList.name,
+            //bloodGroup: this.state.donorList.bloodGroup
             }];
-            list = this.state.donorList;
             list.push(snap.val().donorList);
-            alert(list);
+            list = this.state.donorList;
+            // alert(list);
             this.setState({
                 donorList: list
             })
-            // console.log(this.state.donorsInfo);
+            //console.log(this.state.donorList);
         })
-        console.log(this.state.donorList);
+        // console.log(this.state.donorList);
     }
   getValues(e) {
     e.preventDefault();
