@@ -17,10 +17,10 @@ class DonorList extends Component {
     super();
     this.state = {
     donorList: [
-      {
-      name: "Hammad Hassan",
-      bloodGroup: "B+"
-    }
+    //   {
+    //   name: "Hammad Hassan",
+    //   bloodGroup: "B+"
+    // }
     ]
     }
     this.getValues = this.getValues.bind(this)
@@ -49,15 +49,20 @@ class DonorList extends Component {
     //     rootRef.on('child_added', function (value) {
             rootRef.on("child_added", function(snapshot) {
           var details = [
-            {}
+            // {}
           ];
           details = snapshot.val();
+          //details.push(snapshot.val().donorList);
           console.log(snapshot.val());
             console.log(details);
-            //details = this.state.donorList;
             //alert(donorList);
-  console.log("Author: " + details.name);
-  console.log("Title: " + details.bloodGroup);
+  console.log("Donor Name: " + details.donors.name);
+  console.log("Blood Group: " + details.donors.bloodGroup);
+            console.log(details);
+            this.setState({
+                 donorList: details
+             })
+            details = this.state.donorList;
   //console.log(this.state.donorList);
   //console.log("Previous Post ID: " + prevChildKey);
 
