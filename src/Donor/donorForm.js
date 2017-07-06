@@ -9,10 +9,13 @@ class DonorForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-        value: "1"       
+        donorList: [],    
+         value: "1"
       }
     }
-    handleChange = (event, index, value) => this.setState({value});
+    handleChange = (event, index, value) => this.setState({
+        value
+    });
 
     onSubmit(ev) {
         ev.preventDefault()
@@ -21,12 +24,14 @@ class DonorForm extends Component {
             bloodGroup : this.state.value
         }
         firebase.database().ref('donorsData/').push({ donors }).then(
-        console.log('success', donors)
+        console.log('success')
         );
-        // this.setState({
-        //     name: "",
-        //     bloodGroup: "1"
-        // });
+        this.setState({
+            donors: {
+                name: "",
+                bloodGroup: "1"
+            }
+        });
     }
     render () {
         return (
