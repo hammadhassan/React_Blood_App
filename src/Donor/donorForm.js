@@ -26,12 +26,9 @@ class DonorForm extends Component {
         firebase.database().ref('donorsData/').push({ donors }).then(
         console.log('success')
         );
-        this.setState({
-            donors: {
-                name: "",
-                bloodGroup: "1"
-            }
-        });
+        this.state = {
+            donorList: ""
+        };
     }
     render () {
         return (
@@ -50,7 +47,6 @@ class DonorForm extends Component {
                         <MenuItem value={"A-"} primaryText="A-" />
                         <MenuItem value={"B-"} primaryText="B-" />
                     </DropDownMenu>
-
                     <RaisedButton primary={true} label="submit" type="submit"/>
                 </form>
             </div>

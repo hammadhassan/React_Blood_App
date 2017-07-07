@@ -33,7 +33,7 @@ class Login extends Component {
             email: this.refs.email.getValue(),
             pass: this.refs.pass.getValue()
         }
-        console.log(user);
+        //console.log(user);
        this.props.loginWithFirebase(user)
        // this.props.signInWithEmailAndPassword(user)
         // firebase.auth().signInWithEmailAndPassword(user.email, user.pass)
