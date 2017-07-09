@@ -5,9 +5,6 @@ import TextField from 'material-ui/TextField';
 import { connect } from 'react-redux'
 import { FirebaseAuthService } from '../store/authMiddleware'
 import { browserHistory } from "react-router";
-// const style = {
-//   margin: 12,
-// };
 
 class SignUp extends Component {
 
@@ -24,17 +21,7 @@ class SignUp extends Component {
             email: this.refs.email.getValue(),
             pass: this.refs.pass.getValue()
         }
-            //this.props.createUserWithEmailAndPassword(user)
             this.props.signUpUser(user)
-        // console.log(user);
-        // this.props.newUser(user);
-        // firebase.auth().createUserWithEmailAndPassword(user.email, user.pass)
-        //     .then((user) => {
-        //         console.log(user)
-        //     })
-        //     .catch((error) => {
-        //         console.log(error.message)
-        //     });
     }
     render () {
         return (
@@ -42,7 +29,6 @@ class SignUp extends Component {
                 <h1>SignUp</h1>
                 <form onSubmit={this.newUser.bind(this)}>
                         <TextField type="text" ref="name" hintText="User Name"/><br />
-                        {/*<input type="text" ref="lName" placeholder="User First Last Name"/>*/}
                         <TextField type="email" ref="email" hintText="User Email" /><br />
                         <TextField type="password" ref="pass" hintText="Password" /><br />
                         <RaisedButton label="Sign Up" primary={true} type="submit"/>
@@ -51,12 +37,6 @@ class SignUp extends Component {
         );
     }
 }
-
-// SignUp.contextTypes = {
-//     router: React.PropTypes.object
-// }
-
-//export default SignUp;
 
 const mapStateToProps = (state) => {
     return {

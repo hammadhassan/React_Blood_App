@@ -5,27 +5,21 @@ import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import { connect } from 'react-redux'
 import { FirebaseAuthService } from '../store/authMiddleware'
-//import CircularProgress from 'material-ui/CircularProgress';
+import CircularProgress from 'material-ui/CircularProgress';
 
 class Login extends Component {
-    // constructor(props) {
-    // super(props);
-//     State = {
-//       isLoading: false,
-//     }
-//   }
+    constructor(props) {
+    super(props);
+    this.state = {
+      loading: false,
+    }
+  }
 
-//   handleChange(e) {
-//     this.setState({
-//       isLoading: true,
-//     })
-//   },
     componentWillReceiveProps(nextProp) {
         if (nextProp.isLoggedin) {
             browserHistory.push('/welcome')
         }
     }
-    
 
     User(ev) {
         ev.preventDefault()
@@ -33,18 +27,26 @@ class Login extends Component {
             email: this.refs.email.getValue(),
             pass: this.refs.pass.getValue()
         }
-        //console.log(user);
+    this.setState({
+      loading: true,
+    })
        this.props.loginWithFirebase(user)
-       // this.props.signInWithEmailAndPassword(user)
-        // firebase.auth().signInWithEmailAndPassword(user.email, user.pass)
-        
-        // .then((user) => {
-        //         browserHistory.push("/welcome")
-        //         console.log(user);
-        //     })
-        //     .catch((error) => {
-        //         console.log(error.message);
-        //     });
+       //.then(this.nowLoginSuccess());
+       alert("User");
+    }
+  nowLoginSuccess() {
+        this.setState({ email: '', password: '', loading: false })
+    }
+
+    renderButtonAndLoader() {
+        if (this.state.loading) {
+            return <CircularProgress />,
+            alert("CircularProgress")
+        }
+        return (
+            <RaisedButton value="Login" onPress={this.User.bind(this)} />,
+            alert("Hello")
+        )
     }
     render () {
         return (
@@ -60,16 +62,12 @@ class Login extends Component {
         );
     }
 }
-//export default Login;
 
-/*const CircularProgressExampleSimple = () => (
+const CircularProgressExampleSimple = () => (
   <div>
     <CircularProgress />
-    <CircularProgress size={60} thickness={7} />
-    <CircularProgress size={80} thickness={5} />
   </div>
-);*/
-
+)
 
 const mapStateToProps = (state) => {
     return {

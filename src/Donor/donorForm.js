@@ -12,6 +12,7 @@ class DonorForm extends Component {
         donorList: [],    
          value: "1"
       }
+    //this.emptyinputField = this.emptyinputField.bind(this);
     }
     handleChange = (event, index, value) => this.setState({
         value
@@ -27,9 +28,14 @@ class DonorForm extends Component {
         console.log('success')
         );
         this.state = {
-            donorList: ""
-        };
+        donorList: [],   
+         value: "1",
+      }
+//emptyinputField()
     }
+    //  emptyinputField() {
+    //       return (this.refs.firstName = "",this.refs.lastName = "", this.state.value= "1"  )
+    //   };
     render () {
         return (
             <div>
