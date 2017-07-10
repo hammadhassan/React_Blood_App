@@ -3,8 +3,21 @@ import { connect } from 'react-redux'
 import AppBar from 'material-ui/AppBar';
 import DonorList from "../Donor/donorList"
 import DonorForm from "../Donor/donorForm"
+import { browserHistory} from 'react-router';
 
 class Welcome extends Component {
+    constructor(props) {
+    super(props);
+    this.setState({
+      isLoggedin: false,
+    })
+//   console.log(state);
+  }
+    componentWillReceiveProps(nextProp) {
+        if (this.state.isLoggedin === false) {
+            browserHistory.push('/login')
+        }
+    }
     render() {
         return (
             <div>

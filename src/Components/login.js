@@ -10,9 +10,10 @@ import CircularProgress from 'material-ui/CircularProgress';
 class Login extends Component {
     constructor(props) {
     super(props);
-    this.state = {
-      loading: false,
+    this.state= {
+        loading: false
     }
+    console.log(this.state);
   }
 
     componentWillReceiveProps(nextProp) {
@@ -27,25 +28,25 @@ class Login extends Component {
             email: this.refs.email.getValue(),
             pass: this.refs.pass.getValue()
         }
-    this.setState({
-      loading: true,
-    })
+    // this.setState({
+    //   loading: true,
+    // })
        this.props.loginWithFirebase(user)
+       this.setState({ email: '', password: '', loading: false })
        //.then(this.nowLoginSuccess());
-       alert("User");
+       console.log(this.state);
     }
-  nowLoginSuccess() {
-        this.setState({ email: '', password: '', loading: false })
-    }
-
+//   nowLoginSuccess() {
+//         this.setState({ email: '', password: '', loading: false })
+//     }
     renderButtonAndLoader() {
-        if (this.state.loading) {
-            return <CircularProgress />,
-            alert("CircularProgress")
+        if (this.state.loading === true) {
+            return <CircularProgress />
+            // alert("CircularProgress")
         }
         return (
-            <RaisedButton value="Login" onPress={this.User.bind(this)} />,
-            alert("Hello")
+            <RaisedButton value="Login" onPress={this.User.bind(this)} />
+            // alert("Hello")
         )
     }
     render () {

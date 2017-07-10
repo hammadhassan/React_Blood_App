@@ -21,7 +21,7 @@ export const AuthReducer = (state = INITIAL_STATE, action) => {
             return Object.assign({}, state, { isLodding: false, errorMessage: action.value, isError: true })
 
         case AuthAction.LOGIN_REJECT:
-            return Object.assign({}, state, { errorMessage: action.value, isError: true })
+            return Object.assign({}, state, { errorMessage: action.value, isError: true, loading: true })
         
         case AuthAction.LOGIN:
             return Object.assign({}, state, { isLoggedin: true, authUser: action.value })
