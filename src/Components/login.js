@@ -32,15 +32,25 @@ class Login extends Component {
     //   loading: true,
     // })
        this.props.loginWithFirebase(user)
-       this.setState({ email: '', password: '', loading: false })
        //.then(this.nowLoginSuccess());
        console.log(this.state);
+       var that = this;
+        this.setState({
+        loading: true
+        
+        });
+       that.setState({ 
+           email: '',
+           password: '',
+           loading: false
+        });
     }
 //   nowLoginSuccess() {
 //         this.setState({ email: '', password: '', loading: false })
 //     }
     renderButtonAndLoader() {
-        if (this.state.loading === true) {
+        var loading = this.state;
+        if (loading) {
             return <CircularProgress />
             // alert("CircularProgress")
         }
@@ -64,15 +74,16 @@ class Login extends Component {
     }
 }
 
-const CircularProgressExampleSimple = () => (
+// const CircularProgressExampleSimple = () => (
+// )
+
+const mapStateToProps = (state) => {
   <div>
     <CircularProgress />
   </div>
-)
-
-const mapStateToProps = (state) => {
     return {
-        isLoggedin: state.isLoggedin
+        isLoggedin: state.isLoggedin,
+        loading: true
     }
 }
 
