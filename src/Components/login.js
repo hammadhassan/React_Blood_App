@@ -5,7 +5,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import { connect } from 'react-redux'
 import { FirebaseAuthService } from '../store/authMiddleware'
-import CircularProgress from 'material-ui/CircularProgress';
+//import CircularProgress from 'material-ui/CircularProgress';
 
 class Login extends Component {
     constructor(props) {
@@ -51,7 +51,7 @@ class Login extends Component {
     renderButtonAndLoader() {
         var loading = this.state;
         if (loading) {
-            return <CircularProgress />
+            // return <CircularProgress />
             // alert("CircularProgress")
         }
         return (
@@ -78,9 +78,9 @@ class Login extends Component {
 // )
 
 const mapStateToProps = (state) => {
-  <div>
-    <CircularProgress />
-  </div>
+//   <div>
+//     <CircularProgress />
+//   </div>
     return {
         isLoggedin: state.isLoggedin,
         loading: true

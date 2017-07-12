@@ -27,7 +27,10 @@ class DonorForm extends Component {
         firebase.database().ref('donorsData/').push({ donors }).then(
         console.log('success')
         );
-        this.refs.form.reset();
+        this.setState({
+            donorList: "",
+            value: ''
+        });
     };
     //    handleOnAdd: function (e) {
     //     this.setState({ value: '' });
