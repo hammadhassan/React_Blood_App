@@ -27,12 +27,11 @@ class DonorForm extends Component {
         firebase.database().ref('donorsData/').push({ donors }).then(
         console.log('success')
         );
-        this.state = {
-        donorList: [],   
-         value: "1",
-      }
-//emptyinputField()
-    }
+        this.refs.form.reset();
+    };
+    //    handleOnAdd: function (e) {
+    //     this.setState({ value: '' });
+    // }
     //  emptyinputField() {
     //       return (this.refs.firstName = "",this.refs.lastName = "", this.state.value= "1"  )
     //   };
