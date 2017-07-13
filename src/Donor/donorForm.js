@@ -4,6 +4,9 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 //import donorList from './donorList.js';
 import firebase from "firebase";
     injectTapEventPlugin();
+import {List, ListItem, makeSelectable} from 'material-ui/List';
+
+//let DonorForm = makeSelectable(List);
 
 class DonorForm extends Component {
     constructor(props) {
@@ -15,6 +18,8 @@ class DonorForm extends Component {
     //this.emptyinputField = this.emptyinputField.bind(this);
     }
     handleChange = (event, index, value) => this.setState({
+        //donorList,
+        selectedIndex: index,
         value
     });
 
@@ -27,8 +32,9 @@ class DonorForm extends Component {
         firebase.database().ref('donorsData/').push({ donors }).then(
         //alert("Donor Submit"),
         this.setState({
-            donorList: donors.pop(),
-            value: '1'
+            // donorList: donors.pop(),
+            value: '1',
+            donorList: donors[0]
         }),
         console.log(this.state)
     );
