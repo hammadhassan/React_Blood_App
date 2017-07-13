@@ -25,12 +25,13 @@ class DonorForm extends Component {
             bloodGroup : this.state.value
         }
         firebase.database().ref('donorsData/').push({ donors }).then(
-        console.log('success')
-        );
+        //alert("Donor Submit"),
         this.setState({
-            donorList: "",
-            value: ''
-        });
+            donorList: donors.pop(),
+            value: '1'
+        }),
+        console.log(this.state)
+    );
     };
     //    handleOnAdd: function (e) {
     //     this.setState({ value: '' });
