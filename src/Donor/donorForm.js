@@ -15,7 +15,8 @@ class DonorForm extends Component {
         donorList: [],    
          value: "1"
       }
-    //this.emptyinputField = this.emptyinputField.bind(this);
+    console.log(this.state)
+      //this.emptyinputField = this.emptyinputField.bind(this);
     }
     handleChange = (event, index, value) => this.setState({
         //donorList,
@@ -27,14 +28,21 @@ class DonorForm extends Component {
         ev.preventDefault()
         let donors = {
             name : this.refs.firstName.getValue() + " " + this.refs.lastName.getValue(),
+            firstName : this.refs.firstName.getValue(),
+            lastName: this.refs.lastName.getValue(),
             bloodGroup : this.state.value
         }
         firebase.database().ref('donorsData/').push({ donors }).then(
         //alert("Donor Submit"),
+         //donors.splice(1, 1);
+        //ref.set(list);
         this.setState({
             // donorList: donors.pop(),
-            value: '1',
-            donorList: donors[0]
+            //newChildRef.set({foo: 'bar'});
+            // donorList: [],
+            firstName: "",
+            lastName: "",
+            value: '1'
         }),
         console.log(this.state)
     );
