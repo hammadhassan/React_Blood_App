@@ -28,8 +28,8 @@ class DonorForm extends Component {
         ev.preventDefault()
         let donors = {
             name : this.refs.firstName.getValue() + " " + this.refs.lastName.getValue(),
-            firstName : this.refs.firstName.getValue(),
-            lastName: this.refs.lastName.getValue(),
+            //firstName : this.refs.firstName.getValue(),
+            //lastName: this.refs.lastName.getValue(),
             bloodGroup : this.state.value
         }
         firebase.database().ref('donorsData/').push({ donors }).then(
@@ -46,17 +46,18 @@ class DonorForm extends Component {
         }),
         console.log(this.state)
     );
+    // clearField() (
+    //     this.refs.firstName.getValue() = "",
+    //     this.refs.lastName.getValue() = ""
+    // );
     };
-    //    handleOnAdd: function (e) {
-    //     this.setState({ value: '' });
-    // }
     //  emptyinputField() {
     //       return (this.refs.firstName = "",this.refs.lastName = "", this.state.value= "1"  )
     //   };
     render () {
         return (
             <div>
-                <form onSubmit={this.onSubmit.bind(this)}>
+                <form onSubmit={this.onSubmit.bind(this)} onClick={this.clearField.bind(this)}>
                     <TextField type="text" placeholder="First Name" ref="firstName" />
                     <TextField type="text" placeholder="Last Name" ref="lastName" />
                     <DropDownMenu value={this.state.value} onChange={this.handleChange.bind(this)}>
